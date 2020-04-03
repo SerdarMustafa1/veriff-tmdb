@@ -1,0 +1,19 @@
+.vmdb-home {
+  margin-bottom: 100px;
+}
+
+h1 {
+  font-family: "Abel", sans-serif;
+  font-size: 42px;
+}
+
+.vmdb-home-grid {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.vmdb-trending-container {
+  color: "white";
+  font-family: "Abel";
+}
