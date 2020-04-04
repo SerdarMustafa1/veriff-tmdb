@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { API_URL, API_KEY, IMAGE_BASE_URL, POSTER_SIZE } from "../../../config";
 import classnames from "classnames";
+import { isMobile, MobileView } from "react-device-detect";
+import windowSize from "react-window-size";
 import isString from "lodash/isString";
 import isBoolean from "lodash/isBoolean";
 import isFunction from "lodash/isFunction";
@@ -27,6 +29,7 @@ class ToggleSwitch extends Component {
   };
 
   componentDidMount() {
+    const size = useWindowSize();
     const trendingToday = `${API_URL}trending/all/day?api_key=${API_KEY}&language=en-US&page=1`;
     this.fetchTodayItems(trendingToday);
 
@@ -132,7 +135,18 @@ class ToggleSwitch extends Component {
       infinite: true,
       speed: 500,
       slidesToShow: 6,
-      slidesToScroll: 3,
+      slidesToScroll: 5,
+      centerPadding: "100px",
+      lazyLoad: "onDemand",
+      onSwipe: null
+    };
+
+    const mobileSettings = {
+      className: "slider",
+      infinite: true,
+      speed: 500,
+      slidesToShow: 2,
+      slidesToScroll: 1,
       centerPadding: "100px",
       lazyLoad: "onDemand",
       onSwipe: null
@@ -160,10 +174,16 @@ class ToggleSwitch extends Component {
           </div>
           <div style={{ marginLeft: 10, color: "white" }}>This Week</div>
         </div>
-
+        <p style={{ color: "white" }}>
+          Screen width is: {this.props.windowWidth}
+        </p>
         <div className="vmdb-slider-container">
           {enabled ? (
-            <Slider {...settings}>
+            <Slider
+              {...(isMobile || MobileView
+                ? { ...mobileSettings }
+                : { ...settings })}
+            >
               {dayMovies.map((element, i) => (
                 <MovieThumb
                   styled={{ marginRight: 15, marginLeft: 15 }}

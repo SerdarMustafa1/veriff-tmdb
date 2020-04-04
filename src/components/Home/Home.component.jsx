@@ -103,7 +103,7 @@ class Home extends Component {
       searchTerm
     } = this.state;
 
-    console.log(`state`, movies[0]);
+    // console.log(`state`, movies[0]);
     // const movieGenre = console.log("genre", movies);
 
     return (

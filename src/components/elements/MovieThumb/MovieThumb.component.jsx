@@ -17,25 +17,8 @@ const MovieThumb = ({
 }) => (
   <div className="vmdb-moviethumb" style={styled}>
     {!noRating ? (
-      <div
-        className="rating-container"
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "flex-end"
-        }}
-      >
-        <p
-          style={{
-            color: "white",
-            backgroundColor: "#71acb1",
-            width: "20px",
-            height: "20px",
-            justifySelf: "center"
-          }}
-        >
-          {movieAverage}
-        </p>
+      <div className="thumb-rating-container">
+        <p style={{}}>{movieAverage}</p>
       </div>
     ) : null}
     {/* You can send props via the Links "to" object. Here we create our own "movieName" */}

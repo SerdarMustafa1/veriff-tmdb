@@ -14,11 +14,14 @@ class Movie extends Component {
     actors: null,
     directors: [],
     loading: false,
-    genres: []
+    releaseData: []
   };
 
   componentDidMount() {
     const { movieId } = this.props.match.params;
+
+    let releaseEndpoint = `${API_URL}movie/${movieId}/release_dates?api_key=${API_KEY}&language=en-US`;
+    this.fetchReleaseData(releaseEndpoint);
 
     if (localStorage.getItem(`${movieId}`)) {
       let state = JSON.parse(localStorage.getItem(`${movieId}`));
@@ -31,10 +34,24 @@ class Movie extends Component {
     }
   }
 
-  fetchItems = endpoint => {
+  fetchReleaseData = async releaseEndpoint => {
+    await fetch(releaseEndpoint)
+      .then(result => result.json())
+      .then(result => {
+        const UsRating = result.results.filter(us => us.iso_3166_1 === "US");
+        this.setState({
+          loading: false,
+          UsRating,
+          releaseData: UsRating[0].release_dates[0].certification
+        });
+      })
+      .catch(error => console.error("Error:", error));
+  };
+
+  fetchItems = async endpoint => {
     const { movieId } = this.props.match.params;
 
-    fetch(endpoint)
+    await fetch(endpoint)
       .then(result => result.json())
       .then(result => {
         if (result.status_code) {
@@ -47,7 +64,6 @@ class Movie extends Component {
             fetch(endpoint)
               .then(result => result.json())
               .then(result => {
-                console.log("object", result);
                 const directors = result.crew.filter(
                   member => member.job === "Director"
                 );
@@ -74,15 +90,18 @@ class Movie extends Component {
 
   render() {
     const { movieName } = this.props.location;
-    const { movie, directors, actors, loading } = this.state;
-    console.log(`state: `, this.state);
+    const { movie, directors, actors, loading, releaseData } = this.state;
 
     return (
       <div className="vmdb-movie">
         {movie ? (
           <div>
             <Navigation movie={movieName} />
-            <MovieInfo movie={movie} directors={directors} />
+            <MovieInfo
+              movie={movie}
+              directors={directors}
+              ratingInfo={releaseData}
+            />
             <MovieInfoBar
               time={movie.runtime}
               budget={movie.budget}
