@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import FontAwesome from "react-fontawesome";
+import { FavContext } from "../../context";
 import {
   API_URL,
   API_KEY,
@@ -12,19 +14,26 @@ import FourColGrid from "../elements/FourColGrid/FourColGrid.component";
 import MovieThumb from "../elements/MovieThumb/MovieThumb.component";
 import LoadMoreBtn from "../elements/LoadMoreBtn/LoadMoreBtn.component";
 import Spinner from "../elements/Spinner/Spinner.component";
-import "./Home.styles.css";
 import ToggleSwitch from "../elements/Trending/Trending";
 
+import "./Home.styles.css";
 class Home extends Component {
-  state = {
-    movies: [],
-    heroImage: null,
-    loading: false,
-    currentPage: 0,
-    totalPages: 0,
-    searchTerm: ""
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      movies: [],
+      heroImage: null,
+      loading: false,
+      currentPage: 0,
+      totalPages: 0,
+      searchTerm: "",
+      list: [],
+      addToFav: false
+    };
+    this.list = [];
+  }
 
+  static contextType = FavContext;
   componentDidMount() {
     if (sessionStorage.getItem("HomeState")) {
       let state = JSON.parse(sessionStorage.getItem("HomeState"));
@@ -35,6 +44,15 @@ class Home extends Component {
       this.fetchItems(endpoint);
     }
   }
+
+  addToFav = () => {
+    this.setState(
+      {
+        addToFav: !this.state.addToFav
+      },
+      () => console.log(this.state.addToFav)
+    );
+  };
 
   searchItems = searchTerm => {
     let endpoint = "";
@@ -103,8 +121,8 @@ class Home extends Component {
       searchTerm
     } = this.state;
 
-    // console.log(`state`, movies[0]);
-    // const movieGenre = console.log("genre", movies);
+    console.log(`state`, this.state);
+    console.log("dsadasd", this.context.addToFav);
 
     return (
       <div className="vmdb-home">

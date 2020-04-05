@@ -44,6 +44,17 @@
 
 .thumb-rating-container {
   display: flex;
-  align-items: center;
-  justify-content: flex-end;
+  align-items: end;
+  justify-content: space-between;
+}
+
+.fa-heart {
+  color: rgb(63, 3, 3);
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.fa-heart:hover {
+  color: #fa1515;
+  opacity: 1;
 }

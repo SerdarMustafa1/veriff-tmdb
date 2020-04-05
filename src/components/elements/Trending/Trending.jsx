@@ -29,7 +29,6 @@ class ToggleSwitch extends Component {
   };
 
   componentDidMount() {
-    const size = useWindowSize();
     const trendingToday = `${API_URL}trending/all/day?api_key=${API_KEY}&language=en-US&page=1`;
     this.fetchTodayItems(trendingToday);
 
@@ -106,7 +105,7 @@ class ToggleSwitch extends Component {
 
   render() {
     const { dayMovies, weekMovies, enabled } = this.state;
-
+    const width = window.innerWidth;
     // Isolate special props and store the remaining as restProps
     const {
       enabled: _enabled,
@@ -130,23 +129,16 @@ class ToggleSwitch extends Component {
       `switch-toggle--${enabled ? "on" : "off"}`
     );
 
+    // dynamic sizing for mobile screens
+    const slidesToShow = width <= "768" ? 2 : 6;
+    const slidesToScroll = width <= "768" ? 1 : 5;
+
     const settings = {
       className: "slider",
       infinite: true,
       speed: 500,
-      slidesToShow: 6,
-      slidesToScroll: 5,
-      centerPadding: "100px",
-      lazyLoad: "onDemand",
-      onSwipe: null
-    };
-
-    const mobileSettings = {
-      className: "slider",
-      infinite: true,
-      speed: 500,
-      slidesToShow: 2,
-      slidesToScroll: 1,
+      slidesToShow: slidesToShow,
+      slidesToScroll: slidesToScroll,
       centerPadding: "100px",
       lazyLoad: "onDemand",
       onSwipe: null
@@ -174,16 +166,10 @@ class ToggleSwitch extends Component {
           </div>
           <div style={{ marginLeft: 10, color: "white" }}>This Week</div>
         </div>
-        <p style={{ color: "white" }}>
-          Screen width is: {this.props.windowWidth}
-        </p>
+        <p style={{ color: "white" }}></p>
         <div className="vmdb-slider-container">
           {enabled ? (
-            <Slider
-              {...(isMobile || MobileView
-                ? { ...mobileSettings }
-                : { ...settings })}
-            >
+            <Slider {...settings}>
               {dayMovies.map((element, i) => (
                 <MovieThumb
                   styled={{ marginRight: 15, marginLeft: 15 }}

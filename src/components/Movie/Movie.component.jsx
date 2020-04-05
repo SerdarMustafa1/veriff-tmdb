@@ -14,7 +14,18 @@ class Movie extends Component {
     actors: null,
     directors: [],
     loading: false,
-    releaseData: []
+    releaseData: [],
+    favorites: []
+  };
+
+  addFavorite = favorite => {
+    const { favorites } = this.state;
+
+    if (!favorites.some(alreadyFavorite => alreadyFavorite.id == favorite.id)) {
+      this.setState({
+        favorites: [...this.state.favorites, favorite]
+      });
+    }
   };
 
   componentDidMount() {
@@ -87,6 +98,10 @@ class Movie extends Component {
       })
       .catch(error => console.error("Error:", error));
   };
+
+  // saveToFavorites = () => {
+  //   localStorage.setItem(`${movieId}`, JSON.stringify(favorites));
+  // };
 
   render() {
     const { movieName } = this.props.location;

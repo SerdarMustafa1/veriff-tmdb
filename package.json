@@ -1,5 +1,6 @@
 {
-  "name": "veriff-imdb-clone",
+  "homepage": "http://SerdarMustafa1.github.io/veriff-tmdb",
+  "name": "veriff-tmdb-clone",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -16,7 +17,6 @@
     "node-sass": "^4.13.1",
     "react": "^16.10.1",
     "react-bootstrap": "^1.0.0",
-    "react-device-detect": "^1.11.14",
     "react-dom": "^16.10.1",
     "react-fontawesome": "^1.6.1",
     "react-horizontal-scrolling-menu": "^0.7.7",
@@ -25,7 +25,6 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.1.2",
     "react-slick": "^0.25.2",
-    "react-window-size": "^1.2.2",
     "slick-carousel": "^1.8.1",
     "use-react-modal": "0.0.9"
   },
@@ -53,6 +52,6 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^2.1.1"
+    "gh-pages": "^2.2.0"
   }
 }
