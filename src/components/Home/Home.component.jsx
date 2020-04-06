@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import FontAwesome from "react-fontawesome";
-import { FavContext } from "../../context";
 import {
   API_URL,
   API_KEY,
@@ -33,7 +32,6 @@ class Home extends Component {
     this.list = [];
   }
 
-  static contextType = FavContext;
   componentDidMount() {
     if (sessionStorage.getItem("HomeState")) {
       let state = JSON.parse(sessionStorage.getItem("HomeState"));
@@ -117,7 +115,6 @@ class Home extends Component {
     } = this.state;
 
     console.log(`state`, this.state);
-    console.log("dsadasd", this.context.addToFav);
 
     return (
       <div className="vmdb-home">

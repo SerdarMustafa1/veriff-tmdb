@@ -107,26 +107,23 @@ const MovieInfo = ({ movie, directors, genres, ratingTypes, ratingInfo }) => {
 
                 <button onClick={handleShow}>
                   <FontAwesome
-                    className="fa-film"
+                    className="fa-lock"
                     name="lock"
                     size="5x"
                     onClick={handleShow}
                   />
-                  <p
-                    className="continue"
-                    style={{ color: "white", marginLeft: 10 }}
-                  >
-                    Click to Verify
-                  </p>
+                  <p className="continue">Click to Verify</p>
                 </button>
               </div>
             </>
           ) : (
-            <a
-              href={`https://www.themoviedb.org/movie/${movie.id}-deadpool/watch`}
-            >
-              <FontAwesome className="fa-film" name="film" size="5x" />
-            </a>
+            <div className="rating-container-film">
+              <a
+                href={`https://www.themoviedb.org/movie/${movie.id}-deadpool/watch`}
+              >
+                <FontAwesome className="fa-film" name="film" size="5x" />
+              </a>
+            </div>
           )}
         </div>
         <Modal show={show} onHide={handleClose}>

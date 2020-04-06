@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import FontAwesome from "react-fontawesome";
 import "./Header.styles.css";
 
 const Header = () => {
@@ -17,12 +16,6 @@ const Header = () => {
             alt="vmdb-logo"
           />
         </Link>
-        <FontAwesome
-          onClick={showFavorites}
-          className="fa-heart"
-          name="heart"
-          size="5x"
-        />
       </div>
     </div>
   );
