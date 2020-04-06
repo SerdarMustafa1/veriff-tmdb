@@ -103,6 +103,11 @@ class ToggleSwitch extends Component {
       .catch(error => console.error("Error:", error));
   };
 
+  getFromLocal = async movieName => {
+    let fav = localStorage.getItem("favorites");
+    console.log("fav: ", fav);
+  };
+
   render() {
     const { dayMovies, weekMovies, enabled } = this.state;
     const width = window.innerWidth;
@@ -205,6 +210,7 @@ class ToggleSwitch extends Component {
               ))}
             </Slider>
           )}
+          <button onClick={this.getFromLocal}>Favorites</button>
         </div>
       </>
     );

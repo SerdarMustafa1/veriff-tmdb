@@ -45,13 +45,8 @@ class Home extends Component {
     }
   }
 
-  addToFav = () => {
-    this.setState(
-      {
-        addToFav: !this.state.addToFav
-      },
-      () => console.log(this.state.addToFav)
-    );
+  getFromLocal = async movieName => {
+    localStorage.getItem("favorites", JSON.stringify(movieName));
   };
 
   searchItems = searchTerm => {

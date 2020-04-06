@@ -16,21 +16,43 @@ const MovieThumb = ({
   clickable,
   styled
 }) => {
-  const [favMovies, setFavMovies] = useState({});
-  // // const [favList, setFavList] = setFavList([]);
+  const push1 = async (movieId, movieName, image) => {
+    const stringId = JSON.stringify(movieId);
+    const stringName = JSON.stringify(movieName);
+    const stringImage = JSON.stringify(image);
 
-  const addFavorite = (movieId, movieName, image) => {
-    setFavMovies({ movieId, movieName, image });
+    // our array
+    let moviesList = [];
+
+    // our object
+    let movies = {
+      movieId: stringId,
+      movieName: stringName,
+      image: stringImage
+    };
+
+    moviesList.push(movies);
+
+    // storing our array as a string
+    localStorage.setItem("movieList", JSON.stringify(moviesList));
+
+    let updatedMoviesList = [];
+
+    const retrievedMovies = localStorage.getItem("movieList");
+    const parseRetrievedMovies = JSON.parse(retrievedMovies);
+    console.log("retrievedMovies: ", retrievedMovies);
+    console.log("parseRetrievedMovies: ", parseRetrievedMovies);
+    parseRetrievedMovies.push(movies);
   };
-  console.log(favMovies);
+
   return (
     <div>
-      <button style={{ backgroundColor: "white" }}>click here</button>
       <div className="vmdb-moviethumb" style={styled}>
         {!noRating ? (
           <div className="thumb-rating-container">
             <FontAwesome
-              onClick={() => addFavorite(movieId, movieName, image)}
+              // onClick={() => addFavorite(movieId, movieName, image)}
+              onClick={() => push1(movieId, movieName, image)}
               className="fa-heart"
               name="heart"
               size="2x"
