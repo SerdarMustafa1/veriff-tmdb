@@ -7,7 +7,7 @@
   background: #1c1c1c;
   padding: 20px;
   box-sizing: border-box;
-  font-family: 'Abel', sans-serif;
+  font-family: "Abel", sans-serif;
   font-size: 20px;
 }
 
@@ -48,14 +48,9 @@
 }
 
 @media screen and (max-width: 768px) {
-
   .fa-time,
   .fa-revenue,
   .fa-budget {
     display: none;
   }
-}
-
-@media screen and (max-width: 1000px) {
-  .vmdb-movieinfobar-content-col {}
 }

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { API_URL, API_KEY, IMAGE_BASE_URL, POSTER_SIZE } from "../../../config";
+import { IMAGE_BASE_URL, POSTER_SIZE } from "../../../config";
+import { API_URL, API_KEY } from "../../../env";
 import classnames from "classnames";
 import isString from "lodash/isString";
 import isBoolean from "lodash/isBoolean";
@@ -148,15 +149,8 @@ class ToggleSwitch extends Component {
 
     return (
       <>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            marginBottom: 30,
-            alignItems: "center"
-          }}
-        >
-          <div style={{ marginLeft: 20, color: "white" }}>Today</div>
+        <div className="trending-container" style={{}}>
+          <p>Today</p>
           <div style={{ marginLeft: 10, marginRight: 5 }}>
             <div
               className={switchClasses}
@@ -166,9 +160,9 @@ class ToggleSwitch extends Component {
               <div className={togglerClasses}></div>
             </div>
           </div>
-          <div style={{ marginLeft: 10, color: "white" }}>This Week</div>
+          <p>This Week</p>
         </div>
-        <p style={{ color: "white" }}></p>
+
         <div className="vmdb-slider-container">
           {enabled ? (
             <Slider {...settings}>

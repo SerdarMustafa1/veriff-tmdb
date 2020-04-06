@@ -1,11 +1,6 @@
 import React, { Component } from "react";
-import {
-  API_URL,
-  API_KEY,
-  IMAGE_BASE_URL,
-  POSTER_SIZE,
-  BACKDROP_SIZE
-} from "../../config";
+import { IMAGE_BASE_URL, POSTER_SIZE, BACKDROP_SIZE } from "../../config";
+import { API_URL, API_KEY } from "../../env";
 import HeroImage from "../elements/HeroImage/HeroImage.component";
 import SearchBar from "../elements/SearchBar/SearchBar.component";
 import FourColGrid from "../elements/FourColGrid/FourColGrid.component";

@@ -29,7 +29,6 @@
 .vmdb-movieinfo-thumb {
   width: 300px;
   float: left;
-
 }
 
 .vmdb-movieinfo-text {
@@ -73,6 +72,12 @@
 
 .vmdb-director {
   margin: 0;
+}
+
+.film-genres {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .rating-container-film {

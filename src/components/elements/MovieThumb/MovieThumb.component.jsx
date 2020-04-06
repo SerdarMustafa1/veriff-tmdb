@@ -74,7 +74,7 @@ const MovieThumb = ({
         ) : (
           <img src={image} alt="moviethumb" />
         )}
-        <div style={{ flexWrap: "nowrap" }}>
+        <div className="movie-name">
           <h4>{movieName}</h4>
           <h6>
             <Moment format="MMM Do YYYY">{releaseDate}</Moment>

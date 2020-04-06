@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { IMAGE_BASE_URL, POSTER_SIZE, BACKDROP_SIZE } from "../../../config";
+import { VERIFF_KEY } from "../../../env";
 import PropTypes from "prop-types";
 import FontAwesome from "react-fontawesome";
 import Veriff from "@veriff/js-sdk";
@@ -16,7 +17,7 @@ const MovieInfo = ({ movie, directors, genres, ratingTypes, ratingInfo }) => {
   const handleShow = () => setShow(true);
 
   const veriff = Veriff({
-    apiKey: "394b1f03-204c-449c-bb45-98cc44ceabdb",
+    apiKey: `${VERIFF_KEY}`,
     parentId: "veriff-root",
     onSession: function(err, response) {
       // received the response, verification can be started now
@@ -50,13 +51,7 @@ const MovieInfo = ({ movie, directors, genres, ratingTypes, ratingInfo }) => {
               {movie.title} - (
               <Moment format="YYYY">{movie.release_date}</Moment>)
             </h1>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "space-between"
-              }}
-            >
+            <div className="film-genres">
               {movie.genres.map((element, i) => {
                 return (
                   <div key={i}>

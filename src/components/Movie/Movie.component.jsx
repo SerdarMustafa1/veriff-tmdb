@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { API_URL, API_KEY, IMAGE_BASE_URL, POSTER_SIZE } from "../../config";
+import { IMAGE_BASE_URL, POSTER_SIZE } from "../../config";
+import { API_URL, API_KEY } from "../../env";
 import Navigation from "../elements/Navigation/Navigation.component";
 import MovieInfo from "../elements/MovieInfo/MovieInfo.component";
 import MovieThumb from "../elements/MovieThumb/MovieThumb.component";
