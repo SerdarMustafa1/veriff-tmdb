@@ -1,9 +1,9 @@
-import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Header from '../elements/Header/Header.component';
-import Home from '../Home/Home.component';
-import Movie from '../Movie/Movie.component';
-import NotFound from '../elements/NotFound/NotFound.component';
+import React from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Header from "../elements/Header/Header.component";
+import Home from "../Home/Home.component";
+import Movie from "../Movie/Movie.component";
+import NotFound from "../elements/NotFound/NotFound.component";
 
 const App = () => (
   <BrowserRouter>
@@ -16,6 +16,6 @@ const App = () => (
       </Switch>
     </React.Fragment>
   </BrowserRouter>
-)
+);
 
 export default App;
