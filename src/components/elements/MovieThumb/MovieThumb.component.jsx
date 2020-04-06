@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import Moment from "react-moment";
@@ -36,7 +36,7 @@ const MovieThumb = ({
     // storing our array as a string
     localStorage.setItem("movieList", JSON.stringify(moviesList));
 
-    let updatedMoviesList = [];
+    // let updatedMoviesList = [];
 
     const retrievedMovies = localStorage.getItem("movieList");
     const parseRetrievedMovies = JSON.parse(retrievedMovies);

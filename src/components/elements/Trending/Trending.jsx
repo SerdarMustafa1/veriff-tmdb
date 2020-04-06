@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { API_URL, API_KEY, IMAGE_BASE_URL, POSTER_SIZE } from "../../../config";
 import classnames from "classnames";
-import { isMobile, MobileView } from "react-device-detect";
-import windowSize from "react-window-size";
 import isString from "lodash/isString";
 import isBoolean from "lodash/isBoolean";
 import isFunction from "lodash/isFunction";
